@@ -34,7 +34,7 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.VPS_PRIVATEKEY }}
           port: ${{ secrets.VPS_PORT || 22 }}
-          source: remote_server_deploy/docker-compose.yml
+          source: remote_server_deploy/docker-compose.yaml
           target: ${{ secrets.DEPLOY_PATH }}
       - name: Pull and Deploy Image Using SSH
         uses: appleboy/ssh-action@v1
