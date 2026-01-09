@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  qbit-auto-upload:
+    image: nigga8964/qbit-auto-upload:latest
+    container_name: qbit-auto-upload
+    restart: unless-stopped
+    volumes:
+      - /mnt/volume_fra1_01/Downloads:/downloads
+      - /root/.config/rclone:/root/.config/rclone:ro
+      - /root/qbit_auto_upload:/logs
+    env_file:
+      - .env
+    labels:
+      - "com.centurylink.watchtower.enable=true"
