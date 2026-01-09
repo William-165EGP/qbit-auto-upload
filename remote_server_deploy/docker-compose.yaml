@@ -6,7 +6,7 @@ services:
     restart: unless-stopped
     volumes:
       - /mnt/volume_fra1_01/Downloads:/downloads
-      - /root/.config/rclone:/root/.config/rclone:ro
+      - /root/.config/rclone:/root/.config/rclone
       - /root/qbit_auto_upload:/logs
     env_file:
       - .env

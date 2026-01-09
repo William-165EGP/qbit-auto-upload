@@ -27,13 +27,22 @@ jobs:
         run: |
           docker push \
           ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+      - name: Sync the docker-compose file into VPS
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_PRIVATEKEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          source: remote_server_deploy/docker-compose.yml
+          target: ${{ secret.DEPLOY_PATH }}
       - name: Pull and Deploy Image Using SSH
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.VPS_HOST}}
           username: ${{ secrets.VPS_USERNAME}}
           key: ${{ secrets.VPS_PRIVATEKEY }}
-          port: ${{ secrets.VPS_PORT || 22}}
+          port: ${{ secrets.VPS_PORT || 22 }}
           script: |
             set -e
             cd ${{ secrets.DEPLOY_PATH }}
