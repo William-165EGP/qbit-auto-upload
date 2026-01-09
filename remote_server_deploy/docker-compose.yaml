@@ -11,4 +11,4 @@ services:
     env_file:
       - .env
     labels:
-      - "com.centurylink.watchtower.enable=true"
+      - "com.centurylinklabs.watchtower.enable=true"
