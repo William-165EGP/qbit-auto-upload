@@ -5,7 +5,7 @@ on:
       - master
   workflow_dispatch:
 env:
-  IMAGE_NAME: qbit_auto_upload
+  IMAGE_NAME: qbit-auto-upload
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
