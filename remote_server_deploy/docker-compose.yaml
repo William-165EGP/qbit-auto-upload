@@ -10,5 +10,3 @@ services:
       - /root/qbit_auto_upload:/logs
     env_file:
       - .env
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
