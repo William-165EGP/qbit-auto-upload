@@ -11,7 +11,6 @@ The Deployment procedure is divided into 2 steps
 Build on local machine:
 
     sudo docker build -t user_name/qbit_auto_upload:latest .
-    sudo docker tag user_name/qbit_auto_upload:latest user_name/qbit_auto_upload:latest
     sudo docker push user_name/qbit_auto_upload:latest
 
 Deploy on remote machine:
