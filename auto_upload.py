@@ -33,14 +33,20 @@ while True:
         torrents = qb.torrents_info()
         for torrent in torrents:
             if torrent.progress >= 1.0:
+                content_path = torrent.content_path
+                if not os.path.exists(content_path):
+                    logging.error(f"{torrent.name} content path not found: {content_path}")
+                    continue
+                
                 logging.info(f"{torrent.name} download complete, now uploading to {RCLONE_REMOTE}")
 
                 result = subprocess.run([
                   "rclone",
                   "copy",
-                  DOWNLOAD_DIR,
+                  content_path,
                   RCLONE_REMOTE,
-                  "--ignore-existing"  
+                  "--ignore-existing",
+                  "--error-on-no-transfer"  
                 ])
 
                 if result.returncode == 0:
